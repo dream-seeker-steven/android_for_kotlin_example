@@ -1,0 +1,4 @@
+include ':BroadcastsDemo'
+include ':Fragmentdemo'
+include ':RecyclerViewDemo'
+rootProject.name = "Android_Kotlin_Example"
