@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         initFruit()
         // 创建布局管理器
         val layoutManager = LinearLayoutManager(this)
+        // 水平布局
+        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         recyclerView.layoutManager = layoutManager
         // 装载适配器
         val adapter = FruitAdapter(fruitList)
