@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Kotlin_Example">
-        <activity android:name=".frament.MainActivity">
+        <activity android:name="cn.suyyy.kotlin.fragment.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

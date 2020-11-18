@@ -1,4 +1,4 @@
-package cn.suyyy.kotlin.frament
+package cn.suyyy.kotlin.fragment.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
