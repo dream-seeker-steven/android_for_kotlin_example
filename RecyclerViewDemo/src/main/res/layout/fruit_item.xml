@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="5dp"
     >
-    <!--水平布局-->
+
     <ImageView
         android:id="@+id/fruit_image"
         android:layout_width="wrap_content"
