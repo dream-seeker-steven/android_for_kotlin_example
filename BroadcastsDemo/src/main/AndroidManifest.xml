@@ -9,12 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Kotlin_Example">
-        <activity android:name=".broadcasts.MainActivity">
+        <activity android:name=".broadcasts.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".broadcasts.activity.MainActivity">
+
         </activity>
     </application>
 
