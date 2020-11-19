@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/BroadcastsDemo" />
             <option value="$PROJECT_DIR$/FragmentDemo" />
             <option value="$PROJECT_DIR$/RecyclerViewDemo" />
+            <option value="$PROJECT_DIR$/RunTimePermissionDemo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

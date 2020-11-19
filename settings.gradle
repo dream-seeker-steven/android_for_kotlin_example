@@ -1,3 +1,4 @@
+include ':RunTimePermissionDemo'
 include ':FragmentDemo'
 include ':BroadcastsDemo'
 include ':RecyclerViewDemo'
