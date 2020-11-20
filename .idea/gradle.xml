@@ -13,6 +13,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/BroadcastsDemo" />
+            <option value="$PROJECT_DIR$/ContentResolverForContactsDemo" />
             <option value="$PROJECT_DIR$/FragmentDemo" />
             <option value="$PROJECT_DIR$/RecyclerViewDemo" />
             <option value="$PROJECT_DIR$/RunTimePermissionDemo" />
