@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PlayAudioVideo</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="replay">Replay</string>
+    <string name="audio">Audio</string>
+    <string name="video">video</string>
 </resources>
