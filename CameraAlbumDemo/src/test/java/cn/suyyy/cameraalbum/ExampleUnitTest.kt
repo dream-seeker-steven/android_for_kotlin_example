@@ -1,4 +1,4 @@
-package cn.suyyy.cameraalbumdemo
+package cn.suyyy.cameraalbum
 
 import org.junit.Test
 

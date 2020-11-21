@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Kotlin_Example">
-        <activity android:name=".MainActivity">
+        <activity android:name=".contacts.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,16 +1,15 @@
-package cn.suyyy.kotlin
+package cn.suyyy.kotlin.contacts
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.widget.ActivityChooserView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import cn.suyyy.kotlin.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
