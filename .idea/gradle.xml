@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/ContentResolverForContactsDemo" />
             <option value="$PROJECT_DIR$/FragmentDemo" />
             <option value="$PROJECT_DIR$/NotificationDemo" />
+            <option value="$PROJECT_DIR$/PlayAudioVideo" />
             <option value="$PROJECT_DIR$/RecyclerViewDemo" />
             <option value="$PROJECT_DIR$/RunTimePermissionDemo" />
           </set>
