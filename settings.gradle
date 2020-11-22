@@ -1,3 +1,4 @@
+include ':MaterialDesignDemo'
 include ':PlayAudioVideo'
 include ':CameraAlbumDemo'
 include ':NotificationDemo'
