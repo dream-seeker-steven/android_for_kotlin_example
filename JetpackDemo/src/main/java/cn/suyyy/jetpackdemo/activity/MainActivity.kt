@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.edit
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import cn.suyyy.jetpackdemo.R
 import cn.suyyy.jetpackdemo.factory.MainViewModelFactory
@@ -29,20 +30,23 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, MainViewModelFactory(countReserved))
             .get(MainViewModel::class.java)
         plusOneBtn.setOnClickListener {
-            viewModel.counter++
-            refreshCounter()
+            viewModel.plusOne()
         }
         clearBtn.setOnClickListener {
-            viewModel.counter = 0
-            refreshCounter()
+            viewModel.clear()
         }
-        refreshCounter()
+
+        // 当数据更新时，会回调到这里
+        viewModel.counter.observe(this, Observer {
+            infoText.text= it.toString()
+        })
+
     }
 
     override fun onPause() {
         super.onPause()
         sp.edit() {
-            putInt("count_reserved", viewModel.counter)
+            putInt("count_reserved", viewModel.counter.value ?: 0)
         }
     }
 
