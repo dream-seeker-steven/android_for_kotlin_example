@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.core.content.edit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.observe
 import cn.suyyy.jetpackdemo.R
 import cn.suyyy.jetpackdemo.factory.MainViewModelFactory
 import cn.suyyy.jetpackdemo.server.MyObServer
@@ -37,9 +38,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 当数据更新时，会回调到这里
-        viewModel.counter.observe(this, Observer {
-            infoText.text= it.toString()
-        })
+        viewModel.counter.observe(this) {
+            infoText.text = it.toString()
+        }
 
     }
 
