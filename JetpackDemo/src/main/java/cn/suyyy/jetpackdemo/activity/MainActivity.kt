@@ -8,6 +8,7 @@ import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProviders
 import cn.suyyy.jetpackdemo.R
 import cn.suyyy.jetpackdemo.factory.MainViewModelFactory
+import cn.suyyy.jetpackdemo.server.MyObServer
 import cn.suyyy.jetpackdemo.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,6 +20,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        lifecycle.addObserver(MyObServer())
+
         sp = getPreferences(Context.MODE_PRIVATE)
         val countReserved = sp.getInt("count_reserved", 0)
         // 使用工厂传输数据
