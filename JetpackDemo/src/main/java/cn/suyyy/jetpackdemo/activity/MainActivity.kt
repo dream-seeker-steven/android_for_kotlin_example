@@ -3,12 +3,14 @@ package cn.suyyy.jetpackdemo.activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.work.BackoffPolicy
 import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import cn.suyyy.jetpackdemo.R
 import cn.suyyy.jetpackdemo.factory.MainViewModelFactory
@@ -57,8 +59,27 @@ class MainActivity : AppCompatActivity() {
                     // 失败后以线性 10 秒 抽重新执行，随着失败的次数，重试也会延迟
                 .setBackoffCriteria(BackoffPolicy.LINEAR,10,TimeUnit.SECONDS)
                 .build()
+            WorkManager.getInstance(this).enqueue(request)
+
             WorkManager.getInstance(this)
-                .enqueue(request)
+                // 对后台代码进行监听，也可以监听tag标签下所有的后台任务
+                .getWorkInfoByIdLiveData(request.id)
+                .observe(this) {workInfo ->
+                    if (workInfo.state == WorkInfo.State.SUCCEEDED) {
+                        Log.d("MainActivity", "do work succeeded")
+                    } else if (workInfo.state == WorkInfo.State.FAILED) {
+                        Log.d("MainActivity", "do work failed")
+                    }
+                }
+
+            // 链式任务
+            /*WorkManager.getInstance(this)
+                .beginWith(sync)
+                .then(compress)
+                .then(upload)
+                .enqueue()*/
+
+
         }
 
       /*  getUserBtn.setOnClickListener {
