@@ -2,21 +2,22 @@ package cn.suyyy.jetpackdemo.activity
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
+import androidx.work.BackoffPolicy
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import cn.suyyy.jetpackdemo.R
-import cn.suyyy.jetpackdemo.config.AppDatabase
-import cn.suyyy.jetpackdemo.data.User
 import cn.suyyy.jetpackdemo.factory.MainViewModelFactory
 import cn.suyyy.jetpackdemo.server.MyObServer
 import cn.suyyy.jetpackdemo.viewmodel.MainViewModel
+import cn.suyyy.jetpackdemo.work.SimpleWorker
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.concurrent.thread
+import java.util.concurrent.TimeUnit
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +47,20 @@ class MainActivity : AppCompatActivity() {
             infoText.text = it.toString()
         }
 
+        doWorkBtn.setOnClickListener {
+            // 执行一次任务,多次PeriodicWorkRequest
+            val request = OneTimeWorkRequest.Builder(SimpleWorker::class.java)
+                    // 延迟5分钟执行
+                .setInitialDelay(5, TimeUnit.MINUTES)
+                    // 添加标签，可以去取消后台任务请求，不过也可以通过id，也可以一次性取消所有后台任务
+                .addTag("simple")
+                    // 失败后以线性 10 秒 抽重新执行，随着失败的次数，重试也会延迟
+                .setBackoffCriteria(BackoffPolicy.LINEAR,10,TimeUnit.SECONDS)
+                .build()
+            WorkManager.getInstance(this)
+                .enqueue(request)
+        }
+
       /*  getUserBtn.setOnClickListener {
             val userId = (0..10000).random().toString()
             viewModel.getUser(userId)
@@ -58,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             infoText.text = user.firstName
         })*/
 
-        val userDao = AppDatabase.getDatabase(this).userDao()
+        /*val userDao = AppDatabase.getDatabase(this).userDao()
         val user1 = User("Tom", "Brady", 40)
         val user2 = User("Tom", "Hanks", 63)
 
@@ -85,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("MainActivity", user.toString())
                 }
             }
-        }
+        }*/
 
     }
 
