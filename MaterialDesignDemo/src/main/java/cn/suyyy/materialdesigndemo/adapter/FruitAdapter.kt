@@ -12,7 +12,6 @@ import cn.suyyy.materialdesigndemo.R
 import cn.suyyy.materialdesigndemo.activty.FruitActivity
 import cn.suyyy.materialdesigndemo.data.Fruit
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.fruit_item.view.*
 
 class FruitAdapter(val context: Context, val fruitList: List<Fruit>) :
     RecyclerView.Adapter<FruitAdapter.ViewHolder>() {
@@ -25,7 +24,15 @@ class FruitAdapter(val context: Context, val fruitList: List<Fruit>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.fruit_item, parent, false)
         val holder = ViewHolder(view)
-
+        holder.itemView.setOnClickListener {
+            val position = holder.adapterPosition
+            val fruit = fruitList[position]
+            val intent = Intent(context, FruitActivity::class.java).apply {
+                putExtra(FruitActivity.FRUIT_NAME, fruit.name)
+                putExtra(FruitActivity.FRUIT_IMAGE_ID, fruit.imageId)
+            }
+            context.startActivity(intent)
+        }
         return holder
     }
 

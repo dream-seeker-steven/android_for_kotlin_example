@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Kotlin_Example">
-        <activity android:name=".activty.FruitActivity"></activity>
+        <activity
+            android:name=".activty.FruitActivity"
+            android:theme="@style/FruitActivityTheme">
+        </activity>
+
         <activity
             android:name=".activty.MainActivity"
             android:label="Fruits">
@@ -19,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
