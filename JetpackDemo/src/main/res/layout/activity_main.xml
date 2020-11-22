@@ -24,4 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/clear"/>
+
+    <Button
+        android:id="@+id/getUserBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/get_user"/>
+
 </LinearLayout>

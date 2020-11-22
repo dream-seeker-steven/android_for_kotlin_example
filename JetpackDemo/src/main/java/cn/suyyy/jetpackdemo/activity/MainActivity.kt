@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.content.edit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -41,6 +42,18 @@ class MainActivity : AppCompatActivity() {
         viewModel.counter.observe(this) {
             infoText.text = it.toString()
         }
+
+        getUserBtn.setOnClickListener {
+            val userId = (0..10000).random().toString()
+            viewModel.getUser(userId)
+        }
+        /**
+         * 回调给observer,更新数据
+         */
+        viewModel.user.observe(this, Observer { user ->
+            Log.d("log-MainActivity", "observe")
+            infoText.text = user.firstName
+        })
 
     }
 
