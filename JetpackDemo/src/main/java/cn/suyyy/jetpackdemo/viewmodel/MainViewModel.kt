@@ -13,11 +13,21 @@ import cn.suyyy.jetpackdemo.singleton.Repository
  */
 class MainViewModel(countReserved: Int) : ViewModel() {
 
-    private val userIdLiveData = MutableLiveData<String>()
+    private val refreshLiveData = MutableLiveData<Any?>()
 
-    /**
+    val refreshResult = Transformations.switchMap(refreshLiveData) {
+        Repository.getUser("")
+    }
+
+    fun refresh() {
+        refreshLiveData.value = refreshLiveData.value
+    }
+
+/*    private val userIdLiveData = MutableLiveData<String>()
+
+    *//**
      * 数据更新改后，调用和这个转换
-     */
+     *//*
     val user: LiveData<User> = Transformations.switchMap(userIdLiveData) { userId ->
         Log.d("log-MainViewModel", "switchMap")
         Repository.getUser(userId)
@@ -26,7 +36,7 @@ class MainViewModel(countReserved: Int) : ViewModel() {
     fun getUser(userId: String){
         Log.d("log-MainViewModel", "getUser")
         userIdLiveData.value = userId
-    }
+    }*/
 
 /*
     private val userLiveData = MutableLiveData<User>()
