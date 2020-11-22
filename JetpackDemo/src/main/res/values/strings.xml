@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">JetpackDemo</string>
+    <string name="plus_one">Plus One</string>
+    <string name="clear">Clear</string>
+    <string name="get_user">Get User</string>
+    <string name="add_data">Add Data</string>
+    <string name="update_data">Update Data</string>
+    <string name="delete_data">Delete Data</string>
+    <string name="query_data">Query Data</string>
+    <string name="do_work">Do Work</string>
 </resources>
