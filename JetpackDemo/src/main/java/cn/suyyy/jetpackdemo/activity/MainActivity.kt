@@ -10,10 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import cn.suyyy.jetpackdemo.R
+import cn.suyyy.jetpackdemo.config.AppDatabase
+import cn.suyyy.jetpackdemo.data.User
 import cn.suyyy.jetpackdemo.factory.MainViewModelFactory
 import cn.suyyy.jetpackdemo.server.MyObServer
 import cn.suyyy.jetpackdemo.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,17 +46,46 @@ class MainActivity : AppCompatActivity() {
             infoText.text = it.toString()
         }
 
-        getUserBtn.setOnClickListener {
+      /*  getUserBtn.setOnClickListener {
             val userId = (0..10000).random().toString()
             viewModel.getUser(userId)
         }
-        /**
+        *//**
          * 回调给observer,更新数据
-         */
+         *//*
         viewModel.user.observe(this, Observer { user ->
             Log.d("log-MainActivity", "observe")
             infoText.text = user.firstName
-        })
+        })*/
+
+        val userDao = AppDatabase.getDatabase(this).userDao()
+        val user1 = User("Tom", "Brady", 40)
+        val user2 = User("Tom", "Hanks", 63)
+
+        addDataBtn.setOnClickListener {
+            thread {
+                user1.id = userDao.insertUser(user1)
+                user2.id = userDao.insertUser(user2)
+            }
+        }
+        updateDataBtn.setOnClickListener {
+            thread {
+                user1.age = 42
+                userDao.updateUser(user1)
+            }
+        }
+        deleteDataBtn.setOnClickListener {
+            thread {
+                userDao.deleteUserByLastName("Hanks")
+            }
+        }
+        queryDataBtn.setOnClickListener {
+            thread {
+                for (user in userDao.loadAllUsers()) {
+                    Log.d("MainActivity", user.toString())
+                }
+            }
+        }
 
     }
 
